@@ -1,7 +1,21 @@
 <h1>Question <%= question.id %></h1>
 <p>
-  <%= question.content %> <br /><br />
+<%= question.content %> <br /><br />
+<%# The stuff that we want javascript to hook into, we give a data-* attribute.
+  # data-* attributes are an HTML 5 thing, it's a nice way make it clear that something
+  # in your javascript is hooking into this. You could use CSS classes/ids but that is
+  # ambiguous, so I prefer data-* attributes %>
+
+<%# Since we want to change the vote count, we wrap it in a data-action span %>
+<%# You could name it data-anything, it doesn't matter. I like data-action %>
   Votes: <span data-action="votes"><%= question.votes %></span> <br /><br />
+
+<%# Same thing with upvote/downvote, except we also want to store the database
+  # id of the question they would be upvoting. This isn't necessary if the upvoting
+  # is happening on the show page (/questions/13), but since this is on the index
+  # page, we have to put it somewhere so we know which question was upvoted. %>
   <a data-action="upvote" data-id="<%= question.id %>">Upvote</a> 
   <a data-action="downvote" data-id="<%= question.id %>">Downvote</a>
 </p>
+
+<%# The last thing is the javascript, head over to app/assets/javascripts/questions.js %>
