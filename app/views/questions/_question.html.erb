@@ -1,0 +1,7 @@
+<h1>Question <%= question.id %></h1>
+<p>
+  <%= question.content %> <br /><br />
+  Votes: <span data-action="votes"><%= question.votes %></span> <br /><br />
+  <a data-action="upvote" data-id="<%= question.id %>">Upvote</a> 
+  <a data-action="downvote" data-id="<%= question.id %>">Downvote</a>
+</p>
